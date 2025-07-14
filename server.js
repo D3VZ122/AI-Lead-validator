@@ -15,7 +15,7 @@ const openai = new OpenAI({
 // Test route
 app.post("/ask", async (req, res) => {
   const { messages: messageHistory = [] } = req.body;
-
+    console.lofg("Received message history:", messageHistory);
   const messages = [
     {
   role: "system",
