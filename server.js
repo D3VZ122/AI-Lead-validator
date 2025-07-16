@@ -20,7 +20,7 @@ async function tokengenrate() {
   try {
     const response = await axios.post('https://login.salesforce.com/services/oauth2/token', params);
     const issuedAt = new Date();
-    const expiresAt = new Date(issuedAt.getTime() + 1* 60 * 60 * 1000); // 2 hours
+    const expiresAt = new Date(issuedAt.getTime() + 1* 60 * 60 * 1000);
 
     console.log("✅ Token retrieved successfully.");
 
@@ -42,15 +42,15 @@ const openai = new OpenAI({
 });
 
 
+
 app.post("/ask", async (req, res) => {
   try {
-    // Ensure valid Salesforce token
+n
     if (!tokenjson || tokenjson.expiresAt < Date.now()) {
       console.log("🔄 Refreshing Salesforce token...");
       tokenjson = await tokengenrate();
     }
 
-    console.log("🔐 Token:", tokenjson.token);
 
     const { messages: messageHistory = [] } = req.body;
 
