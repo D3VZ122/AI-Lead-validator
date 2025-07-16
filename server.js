@@ -45,7 +45,7 @@ const openai = new OpenAI({
 
 app.post("/ask", async (req, res) => {
   try {
-n
+
     if (!tokenjson || tokenjson.expiresAt < Date.now()) {
       console.log("🔄 Refreshing Salesforce token...");
       tokenjson = await tokengenrate();
